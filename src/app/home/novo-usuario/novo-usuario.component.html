@@ -1,18 +1,30 @@
 <h4 class="text-center">Registre-se aqui</h4>
 
-<form action="" class="form mt-4">
+<form class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
 
     <div class="form-group">
-        <input placeholder="e-mail" type="email" class="form-control"/>
+        <input placeholder="e-mail" type="text" class="form-control" formControlName="email" >
+        <app-mensagem *ngIf="novoUsuarioForm.get('email')?.errors && novoUsuarioForm.get('email')?.touched"
+        mensagem="Email obrigatotio"></app-mensagem>
+    </div>
+     <div class="form-group">
+        <input placeholder="Nome completo" type="text" class="form-control"
+         formControlName="fullName">
+         <app-mensagem *ngIf="novoUsuarioForm.get('fullName')?.errors && novoUsuarioForm.get('fullName')?.touched" 
+         mensagem="Nome incorreto"></app-mensagem>
+   
     </div>
     <div class="form-group">
-        <input placeholder="Nome Completo" type="text" class="form-control"/>
+        <input placeholder="Usuário" type="text" class="form-control" formControlName="userName">
+        <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors && novoUsuarioForm.get('userName')?.touched" 
+        mensagem="Nome de usuário incorreto"></app-mensagem>
     </div>
     <div class="form-group">
-        <input placeholder="Usuario" type="text" class="form-control"/>
+        <input placeholder="senha" type="password" class="form-control" formControlName="password">
+        <app-mensagem *ngIf="novoUsuarioForm.get('password')?.errors && novoUsuarioForm.get('password')?.touched" 
+        mensagem="Senha incorreta"></app-mensagem>
     </div>
-    <div class="form-group">
-        <input placeholder="Senha" type="password" class="form-control"/>
-    </div>
-    <button class="btn btn-primary btn-block">Cadastro</button>
+    <button class="btn btn-lg btn-primary">Cadastrar</button>
 </form>
+
+<p>Já é um usuário? <a [routerLink]="['']"> Faça login.</a> </p>

@@ -10,7 +10,7 @@
      <div class="form-group">
         <input placeholder="Nome completo" type="text" class="form-control"
          formControlName="fullName">
-         <app-mensagem *ngIf="novoUsuarioForm.get('fullName')?.errors && novoUsuarioForm.get('fullName')?.touched" 
+         <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors && novoUsuarioForm.get('fullName')?.touched" 
          mensagem="Nome incorreto"></app-mensagem>
    
     </div>
@@ -23,6 +23,8 @@
         <input placeholder="senha" type="password" class="form-control" formControlName="password">
         <app-mensagem *ngIf="novoUsuarioForm.get('password')?.errors && novoUsuarioForm.get('password')?.touched" 
         mensagem="Senha incorreta"></app-mensagem>
+        <app-mensagem *ngIf="novoUsuarioForm?.errors" 
+        mensagem="Senha deve ser diferente do usuário"></app-mensagem>
     </div>
     <button class="btn btn-lg btn-primary">Cadastrar</button>
 </form>
